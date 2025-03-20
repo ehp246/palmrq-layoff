@@ -1,0 +1,8 @@
+app:
+  kafka:
+    inbox:
+      article: article 
+
+spring:
+  application:
+    name: artingest

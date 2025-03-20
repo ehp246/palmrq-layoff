@@ -1,10 +1,10 @@
-package com.palmrq.layoff.ingest;
+package com.palmrq.layoff.artingest;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class IngestApplicationTests {
+class ArtIngestApplicationTests {
 
 	@Test
 	void contextLoads() {
