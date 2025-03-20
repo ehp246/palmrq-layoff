@@ -10,10 +10,10 @@ import me.ehp246.aufrest.api.annotation.EnableByRest;
 @EnableByRest
 @ConfigurationPropertiesScan
 @SpringBootApplication
-public class ArtIngestApplication {
+public class ArtingestApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ArtIngestApplication.class, args);
+        SpringApplication.run(ArtingestApplication.class, args);
     }
 
 }

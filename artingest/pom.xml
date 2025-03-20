@@ -11,8 +11,8 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
-	<artifactId>art-ingest</artifactId>
-	<name>art-ingest</name>
+	<artifactId>artingest</artifactId>
+	<name>artingest</name>
 	<description>Layoff article ingestion service</description>
 
 	<dependencies>
