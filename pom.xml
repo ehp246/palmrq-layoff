@@ -40,6 +40,7 @@
 		<log4j.version>2.24.3</log4j.version>
 		<jackson.version>2.18.3</jackson.version>
 		<lombok.version>1.18.36</lombok.version>
+		<jsonschema-generator.version>4.37.0</jsonschema-generator.version>
 		
 		<auf-rest.version>5.0.0</auf-rest.version>
 		<auf-kafka.version>1.0.1</auf-kafka.version>
@@ -90,6 +91,12 @@
 				<groupId>com.fasterxml.jackson.datatype</groupId>
 				<artifactId>jackson-datatype-jsr310</artifactId>
 				<version>${jackson.version}</version>
+			</dependency>
+
+			<dependency>
+			    <groupId>com.github.victools</groupId>
+			    <artifactId>jsonschema-generator</artifactId>
+			    <version>${jsonschema-generator.version}</version>
 			</dependency>
 
 			<dependency>
