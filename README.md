@@ -1,4 +1,4 @@
-# Palmrq Layoff
+# Palm RQ Layoff
 
 ## Requirement
 
