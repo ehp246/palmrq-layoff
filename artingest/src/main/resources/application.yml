@@ -1,7 +1,10 @@
 app:
   kafka:
-    inbox:
-      article: article 
+    groupId: artingest
+    topic:
+      article:
+        inbox: article-inbox
+        outbox: article-outbox
 
 spring:
   application:
