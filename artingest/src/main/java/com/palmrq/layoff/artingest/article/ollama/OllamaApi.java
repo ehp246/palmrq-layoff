@@ -22,7 +22,5 @@ public interface OllamaApi {
     }
 
     record Response(String model, String response, Instant createdAt) {
-        public record Payload(Integer number, String company, String location) {
-        }
     }
 }

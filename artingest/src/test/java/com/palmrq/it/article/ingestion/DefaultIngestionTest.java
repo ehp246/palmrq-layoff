@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 
 import com.palmrq.it.infra.TestInfra;
-import com.palmrq.layoff.artingest.article.kafka.ArctileInboxPayload;
+import com.palmrq.layoff.artingest.article.kafka.InboxPayload;
 import com.palmrq.layoff.artingest.article.kafka.ArticleInbox;
 import com.palmrq.layoff.artingest.config.KafkaConfig;
 import com.palmrq.layoff.artingest.config.KafkaInfra;
@@ -22,7 +22,7 @@ public class DefaultIngestionTest {
 
     @Test
     void sendArticle() {
-        inbox.newArticle(new ArctileInboxPayload(UUID.randomUUID().toString(), UUID.randomUUID().toString(),
+        inbox.newArticle(new InboxPayload(UUID.randomUUID().toString(), UUID.randomUUID().toString(),
                 UUID.randomUUID().toString(), Instant.now()));
     }
 }

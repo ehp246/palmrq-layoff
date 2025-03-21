@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.palmrq.layoff.artingest.article.kafka.ArctileInboxPayload;
+import com.palmrq.layoff.artingest.article.kafka.InboxPayload;
 import com.palmrq.layoff.artingest.article.kafka.ArticleInbox;
 
 import lombok.RequiredArgsConstructor;
@@ -17,7 +17,7 @@ public class ArticleController {
     private final ArticleInbox inbox;
 
     @PostMapping
-    void newArticle(@RequestBody ArctileInboxPayload payload) {
+    void newArticle(@RequestBody InboxPayload payload) {
         this.inbox.newArticle(payload);
     }
 }
