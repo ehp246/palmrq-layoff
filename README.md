@@ -3,6 +3,8 @@
 ## Requirement
 
 * JDK 21
+* Ollama and models
+* Kafka
 
 ## Sample Configuration
 ### `local` profile
