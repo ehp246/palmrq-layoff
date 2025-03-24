@@ -6,8 +6,8 @@ import java.io.StringWriter;
 import org.springframework.stereotype.Service;
 
 import com.palmrq.layoff.artingest.article.kafka.ArticleOutbox;
-import com.palmrq.layoff.artingest.article.kafka.InboxPayload;
-import com.palmrq.layoff.artingest.article.kafka.outbox.FailedIngestionPayload;
+import com.palmrq.layoff.artingest.article.kafka.ArticleInbox.ArticleSubmittedPayload;
+import com.palmrq.layoff.artingest.article.kafka.ArticleOutbox.FailedExtractionPayload;
 import com.palmrq.layoff.artingest.config.KafkaInfra;
 
 import lombok.RequiredArgsConstructor;
@@ -27,8 +27,10 @@ public class FailedInvocationListener implements InvocationListener.FailedListen
         failed.thrown().printStackTrace(pw);
         final var stackTraceString = sw.toString();
 
-        this.articleOutbox.failedIngestion(
-                new FailedIngestionPayload((InboxPayload) failed.bound().arguments()[0], stackTraceString));
+        final var articleSubmittedPayload = (ArticleSubmittedPayload) failed.bound().arguments()[0];
+
+        this.articleOutbox.failedExtraction(new FailedExtractionPayload(articleSubmittedPayload.id(),
+                articleSubmittedPayload.article(), stackTraceString));
     }
 
 }

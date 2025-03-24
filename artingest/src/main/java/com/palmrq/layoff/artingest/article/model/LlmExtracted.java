@@ -1,4 +1,4 @@
-package com.palmrq.layoff.artingest.article.ollama;
+package com.palmrq.layoff.artingest.article.model;
 
 public record LlmExtracted(Integer number, String company, String location) {
 }
