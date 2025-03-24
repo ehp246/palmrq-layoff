@@ -5,6 +5,14 @@ app:
       article:
         inbox: article-inbox
         outbox: article-outbox
+  ollama:
+    promptInstruction: |
+      Extract the number of laid-off employees, 
+      the company name that laid off the employees, 
+      the location where the layoff happened from the article that
+      is at the following paragraph. Return the information in the specified JSON schema.
+      \n
+
 
 spring:
   application:

@@ -31,8 +31,8 @@ public class OnNewActicle {
     private final ArticleOutbox articleOutbox;
 
     public void invoke(@OfValue InboxPayload inboxPayload) throws JsonMappingException, JsonProcessingException {
-        final var response = ollamaApi.postGenerate(
-                new Request(ollamaConfig.model(), jsonSchemaProvider.get(LlmExtracted.class), inboxPayload.content()));
+        final var response = ollamaApi.postGenerate(new Request(ollamaConfig.model(),
+                jsonSchemaProvider.get(LlmExtracted.class), ollamaConfig.promptInstruction() + inboxPayload.content()));
 
         final var extracted = this.objectMapper.readValue(response.response(), LlmExtracted.class);
 
