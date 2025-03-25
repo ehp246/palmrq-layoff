@@ -180,7 +180,7 @@
 					<groupId>org.springframework.boot</groupId>
 					<artifactId>spring-boot-maven-plugin</artifactId>
 					<configuration>
-						 <excludeGroupIds>org.junit.platform</excludeGroupIds>
+						<excludeGroupIds>org.junit.platform</excludeGroupIds>
 						<excludes>
 							<exclude>
 								<groupId>org.projectlombok</groupId>
