@@ -17,3 +17,6 @@ app:
 spring:
   application:
     name: artingest
+  threads:
+    virtual:
+      enabled: true
