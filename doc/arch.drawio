@@ -38,7 +38,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="DDMGIeBaeLBGOG5dMsPG" name="Arch">
-    <mxGraphModel dx="2586" dy="1085" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="673" dy="522" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -48,13 +48,13 @@
         <mxCell id="5VgrTcRLiQh2M2tMitcX-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="5VgrTcRLiQh2M2tMitcX-2" target="5VgrTcRLiQh2M2tMitcX-15" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="EjHSC4pQQv4ryAlzztyH-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="5VgrTcRLiQh2M2tMitcX-2" target="5VgrTcRLiQh2M2tMitcX-1">
+        <mxCell id="EjHSC4pQQv4ryAlzztyH-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="5VgrTcRLiQh2M2tMitcX-2" target="5VgrTcRLiQh2M2tMitcX-1" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="5VgrTcRLiQh2M2tMitcX-2" value="artingest" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/app_services/App_Services.svg;" parent="1" vertex="1">
           <mxGeometry x="590" y="518.5" width="64" height="64" as="geometry" />
         </mxCell>
-        <mxCell id="5VgrTcRLiQh2M2tMitcX-4" value="layoff-api" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/app_services/App_Services.svg;" parent="1" vertex="1">
+        <mxCell id="5VgrTcRLiQh2M2tMitcX-4" value="query-app" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/app_services/App_Services.svg;" parent="1" vertex="1">
           <mxGeometry x="260" y="518.5" width="64" height="64" as="geometry" />
         </mxCell>
         <mxCell id="5VgrTcRLiQh2M2tMitcX-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="5VgrTcRLiQh2M2tMitcX-5" target="5VgrTcRLiQh2M2tMitcX-4" edge="1">
@@ -63,13 +63,13 @@
         <mxCell id="5VgrTcRLiQh2M2tMitcX-5" value="Web" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/preview/Static_Apps.svg;" parent="1" vertex="1">
           <mxGeometry x="70" y="523.5" width="68" height="54" as="geometry" />
         </mxCell>
-        <mxCell id="5VgrTcRLiQh2M2tMitcX-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="5VgrTcRLiQh2M2tMitcX-7" target="5VgrTcRLiQh2M2tMitcX-2" edge="1">
+        <mxCell id="5VgrTcRLiQh2M2tMitcX-10" value="/ingestion/article" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="5VgrTcRLiQh2M2tMitcX-7" target="5VgrTcRLiQh2M2tMitcX-2" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="5VgrTcRLiQh2M2tMitcX-7" value="Crawler" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/app_services/App_Services.svg;" parent="1" vertex="1">
           <mxGeometry x="590" y="750" width="64" height="64" as="geometry" />
         </mxCell>
-        <mxCell id="5VgrTcRLiQh2M2tMitcX-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="5VgrTcRLiQh2M2tMitcX-2" target="EjHSC4pQQv4ryAlzztyH-3" edge="1">
+        <mxCell id="5VgrTcRLiQh2M2tMitcX-12" value="Persist" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="5VgrTcRLiQh2M2tMitcX-2" target="EjHSC4pQQv4ryAlzztyH-3" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="474.80780000000004" y="549.5999999999999" as="targetPoint" />
           </mxGeometry>
@@ -82,7 +82,7 @@
             <mxPoint x="425.18089999999984" y="549.5999999999999" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="EjHSC4pQQv4ryAlzztyH-3" value="" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.elasticsearch_service;fillColor=#F58534;gradientColor=none;" vertex="1" parent="1">
+        <mxCell id="EjHSC4pQQv4ryAlzztyH-3" value="" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.elasticsearch_service;fillColor=#F58534;gradientColor=none;" parent="1" vertex="1">
           <mxGeometry x="419" y="510" width="67.5" height="81" as="geometry" />
         </mxCell>
       </root>

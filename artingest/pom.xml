@@ -37,8 +37,8 @@
 		</dependency>
 
 		<dependency>
-		    <groupId>com.github.victools</groupId>
-		    <artifactId>jsonschema-generator</artifactId>
+			<groupId>com.github.victools</groupId>
+			<artifactId>jsonschema-generator</artifactId>
 		</dependency>
 
 		<dependency>
@@ -80,5 +80,18 @@
 			<optional>true</optional>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>io.github.git-commit-id</groupId>
+				<artifactId>git-commit-id-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>
