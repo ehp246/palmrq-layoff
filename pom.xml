@@ -36,12 +36,12 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<java.version>21</java.version>
-		
+
 		<log4j.version>2.24.3</log4j.version>
 		<jackson.version>2.18.3</jackson.version>
 		<lombok.version>1.18.36</lombok.version>
 		<jsonschema-generator.version>4.37.0</jsonschema-generator.version>
-		
+
 		<auf-rest.version>5.0.0</auf-rest.version>
 		<auf-kafka.version>1.0.1</auf-kafka.version>
 
@@ -49,10 +49,11 @@
 		<maven-javadoc-plugin.version>3.11.2</maven-javadoc-plugin.version>
 		<maven-source-plugin.version>3.3.1</maven-source-plugin.version>
 		<maven-surefire-plugin.version>3.5.2</maven-surefire-plugin.version>
+		<git-commit-id.version>9.0.1</git-commit-id.version>
 	</properties>
 
 	<modules>
-		<module>art-ingest</module>
+		<module>artingest</module>
 	</modules>
 
 	<dependencyManagement>
@@ -62,13 +63,13 @@
 				<artifactId>auf-rest</artifactId>
 				<version>${auf-rest.version}</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>me.ehp246</groupId>
 				<artifactId>auf-kafka</artifactId>
 				<version>${auf-kafka.version}</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>org.apache.logging.log4j</groupId>
 				<artifactId>log4j-core</artifactId>
@@ -80,13 +81,13 @@
 				<artifactId>jackson-module-mrbean</artifactId>
 				<version>${jackson.version}</version>
 			</dependency>
-	
+
 			<dependency>
 				<groupId>com.fasterxml.jackson.module</groupId>
 				<artifactId>jackson-module-parameter-names</artifactId>
 				<version>${jackson.version}</version>
 			</dependency>
-	
+
 			<dependency>
 				<groupId>com.fasterxml.jackson.datatype</groupId>
 				<artifactId>jackson-datatype-jsr310</artifactId>
@@ -94,9 +95,9 @@
 			</dependency>
 
 			<dependency>
-			    <groupId>com.github.victools</groupId>
-			    <artifactId>jsonschema-generator</artifactId>
-			    <version>${jsonschema-generator.version}</version>
+				<groupId>com.github.victools</groupId>
+				<artifactId>jsonschema-generator</artifactId>
+				<version>${jsonschema-generator.version}</version>
 			</dependency>
 
 			<dependency>
@@ -105,7 +106,7 @@
 				<version>${lombok.version}</version>
 				<scope>provided</scope>
 			</dependency>
-			
+
 		</dependencies>
 	</dependencyManagement>
 
@@ -167,6 +168,45 @@
 						</execution>
 					</executions>
 				</plugin>
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+					<configuration>
+						<image>
+							<name>${project.artifactId}:${git.commit.id.abbrev}</name>
+							<env>
+								<BP_JVM_VERSION>21</BP_JVM_VERSION>
+								<BP_JVM_TYPE>temurin</BP_JVM_TYPE>
+								<BP_OS_ARCH>linux/amd64</BP_OS_ARCH>
+							</env>
+						</image>
+						<layers>
+							<enabled>
+								true
+							</enabled>
+						</layers>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>io.github.git-commit-id</groupId>
+					<artifactId>git-commit-id-maven-plugin</artifactId>
+					<version>${git-commit-id.version}</version>
+					<executions>
+						<execution>
+							<id>get-the-git-infos</id>
+							<goals>
+								<goal>revision</goal>
+							</goals>
+							<phase>initialize</phase>
+						</execution>
+					</executions>
+					<configuration>
+						<generateGitPropertiesFile>true</generateGitPropertiesFile>
+						<generateGitPropertiesFilename>
+							${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename>
+						<commitIdGenerationMode>full</commitIdGenerationMode>
+					</configuration>
+				</plugin>			
 			</plugins>
 		</pluginManagement>
 	</build>
