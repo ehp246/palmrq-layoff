@@ -1,4 +1,7 @@
 package com.palmrq.layoff.artingest.model;
 
-public record LlmExtracted(Integer number, String company, String location) {
+import java.time.Instant;
+
+public record LlmExtracted(String company, Integer number, Double percentage, String location, Instant date,
+        String position, String reason) {
 }

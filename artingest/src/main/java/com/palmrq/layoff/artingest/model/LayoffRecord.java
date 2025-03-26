@@ -30,21 +30,20 @@ public class LayoffRecord {
      */
     @Indexed
     private final Instant date;
-    private final Source source;
-
     private Double percentage;
     private String location;
     @Indexed
     private String position;
     private String reason;
-    private boolean verified;
+
+    private final Source source;
 
     @CreatedDate
     private Instant createdAt;
     @LastModifiedDate
     private Instant updatedAt;
 
-    public static record Source(String id, SourceType type, Map<String, Object> clientMeta) {
+    public static record Source(SourceType type, Map<String, Object> clientMeta) {
     }
 
     public static enum SourceType {

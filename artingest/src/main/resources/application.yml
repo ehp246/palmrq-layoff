@@ -7,11 +7,16 @@ app:
         outbox: article-outbox
   ollama:
     promptInstruction: |
-      Extract the number of laid-off employees, 
-      the company name that laid off the employees, 
-      the location where the layoff happened from the article that
-      is at the following paragraph. Return the information in the specified JSON schema.
-      \n
+      The last paragraph is a news article on a company laying off some employees.
+      Extract from the article the following data:
+        the company name that laid off the employees, 
+        the number of laid-off employees, 
+        the location where the layoff happened,
+        the date when the layoff happened,
+        the position that were impacted,
+        the reason given for the layoff.
+        Return the above data in the specified JSON schema format.
+        \n
 
 
 spring:
