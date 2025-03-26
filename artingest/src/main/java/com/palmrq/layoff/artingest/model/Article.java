@@ -1,4 +1,4 @@
-package com.palmrq.layoff.artingest.article.model;
+package com.palmrq.layoff.artingest.model;
 
 import java.time.Instant;
 

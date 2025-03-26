@@ -1,14 +1,14 @@
-package com.palmrq.layoff.artingest.article.kafka.inbox;
+package com.palmrq.layoff.artingest.kafka.inbox;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
 import org.springframework.stereotype.Service;
 
-import com.palmrq.layoff.artingest.article.kafka.ArticleOutbox;
-import com.palmrq.layoff.artingest.article.kafka.ArticleInbox.ArticleSubmittedPayload;
-import com.palmrq.layoff.artingest.article.kafka.ArticleOutbox.FailedExtractionPayload;
 import com.palmrq.layoff.artingest.config.KafkaInfra;
+import com.palmrq.layoff.artingest.kafka.ArticleOutbox;
+import com.palmrq.layoff.artingest.kafka.ArticleInbox.ArticleSubmittedPayload;
+import com.palmrq.layoff.artingest.kafka.ArticleOutbox.FailedExtractionPayload;
 
 import lombok.RequiredArgsConstructor;
 import me.ehp246.aufkafka.api.consumer.InvocationListener;

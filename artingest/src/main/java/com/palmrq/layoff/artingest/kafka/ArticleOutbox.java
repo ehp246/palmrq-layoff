@@ -1,7 +1,7 @@
-package com.palmrq.layoff.artingest.article.kafka;
+package com.palmrq.layoff.artingest.kafka;
 
-import com.palmrq.layoff.artingest.article.model.Article;
-import com.palmrq.layoff.artingest.article.model.LlmExtracted;
+import com.palmrq.layoff.artingest.model.Article;
+import com.palmrq.layoff.artingest.model.LlmExtracted;
 
 import me.ehp246.aufkafka.api.annotation.ByKafka;
 import me.ehp246.aufkafka.api.annotation.OfValue;

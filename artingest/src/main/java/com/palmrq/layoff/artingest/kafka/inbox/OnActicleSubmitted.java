@@ -1,4 +1,4 @@
-package com.palmrq.layoff.artingest.article.kafka.inbox;
+package com.palmrq.layoff.artingest.kafka.inbox;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -6,13 +6,13 @@ import org.apache.logging.log4j.Logger;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.palmrq.layoff.artingest.article.kafka.ArticleOutbox;
-import com.palmrq.layoff.artingest.article.kafka.ArticleInbox.ArticleSubmittedPayload;
-import com.palmrq.layoff.artingest.article.model.LlmExtracted;
-import com.palmrq.layoff.artingest.article.ollama.OllamaApi;
-import com.palmrq.layoff.artingest.article.ollama.OllamaApi.Request;
 import com.palmrq.layoff.artingest.config.JsonSchemaProvider;
 import com.palmrq.layoff.artingest.config.OllamaConfig;
+import com.palmrq.layoff.artingest.kafka.ArticleOutbox;
+import com.palmrq.layoff.artingest.kafka.ArticleInbox.ArticleSubmittedPayload;
+import com.palmrq.layoff.artingest.model.LlmExtracted;
+import com.palmrq.layoff.artingest.ollama.OllamaApi;
+import com.palmrq.layoff.artingest.ollama.OllamaApi.Request;
 
 import lombok.RequiredArgsConstructor;
 import me.ehp246.aufkafka.api.annotation.ForKey;

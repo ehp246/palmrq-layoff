@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 
-import com.palmrq.layoff.artingest.article.kafka.inbox.OnActicleSubmitted;
-import com.palmrq.layoff.artingest.article.kafka.outbox.OnArticleExtracted;
 import com.palmrq.layoff.artingest.config.KafkaInfra;
+import com.palmrq.layoff.artingest.kafka.inbox.OnActicleSubmitted;
+import com.palmrq.layoff.artingest.kafka.outbox.OnArticleExtracted;
 
 import me.ehp246.aufkafka.api.annotation.EnableByKafka;
 import me.ehp246.aufkafka.api.annotation.EnableForKafka;
