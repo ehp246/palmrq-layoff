@@ -13,7 +13,7 @@ import com.github.victools.jsonschema.generator.SchemaGeneratorConfigBuilder;
 import com.github.victools.jsonschema.generator.SchemaVersion;
 
 @Configuration
-public class AppConfig {
+public class AppInfra {
     @Bean
     JsonSchemaProvider jsonSchemaProvider() {
         final var builder = new SchemaGeneratorConfigBuilder(SchemaVersion.DRAFT_2020_12, OptionPreset.PLAIN_JSON)

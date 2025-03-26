@@ -15,6 +15,6 @@ public interface ArticleOutbox {
     public record ArticleExtractedPayload(String id, Article article, LlmExtracted extracted) {
     }
 
-    public record FailedExtractionPayload(String id, Article article, String stackTrace) {
+    public record FailedExtractionPayload(String id, Article article, String message) {
     }
 }
