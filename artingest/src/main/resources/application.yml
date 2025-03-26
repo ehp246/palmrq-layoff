@@ -22,6 +22,9 @@ app:
 spring:
   application:
     name: artingest
+  data:
+    mongodb:
+      auto-index-creation: true
   threads:
     virtual:
       enabled: true
