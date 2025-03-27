@@ -7,6 +7,7 @@ import java.util.Set;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.annotation.Version;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.Builder;
@@ -30,4 +31,6 @@ public class MonthlyBrief {
     private Instant createdAt;
     @LastModifiedDate
     private Instant updatedAt;
+    @Version
+    private long version;
 }
