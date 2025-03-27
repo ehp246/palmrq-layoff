@@ -1,5 +1,6 @@
 package com.palmrq.layoff.artingest.config;
 
+import java.time.Clock;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.springframework.context.annotation.Bean;
@@ -14,6 +15,11 @@ import com.github.victools.jsonschema.generator.SchemaVersion;
 
 @Configuration
 public class AppInfra {
+    @Bean
+    Clock clock() {
+        return Clock.systemUTC();
+    }
+
     @Bean
     JsonSchemaProvider jsonSchemaProvider() {
         final var builder = new SchemaGeneratorConfigBuilder(SchemaVersion.DRAFT_2020_12, OptionPreset.PLAIN_JSON)

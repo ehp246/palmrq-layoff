@@ -14,7 +14,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 
-@Document(collection = "layoff-records")
+@Document(collection = "layoff-record")
 @Accessors(fluent = true)
 @Getter
 @Builder

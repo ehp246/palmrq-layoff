@@ -3,6 +3,7 @@ package com.palmrq.layoff.artingest;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
+import org.springframework.data.mongodb.config.EnableMongoAuditing;
 
 import com.palmrq.layoff.artingest.config.KafkaInfra;
 import com.palmrq.layoff.artingest.kafka.inbox.OnActicleSubmitted;
@@ -17,8 +18,9 @@ import me.ehp246.aufrest.api.annotation.EnableByRest;
 @EnableForKafka(value = {
         @Inbound(value = @From(value = "${app.kafka.topic.article.inbox}"), scan = OnActicleSubmitted.class, invocationListener = KafkaInfra.BEAN_INVOCATION_LISTENER),
         @Inbound(value = @From(value = "${app.kafka.topic.article.outbox}"), scan = OnArticleExtracted.class) })
-@EnableByKafka()
+@EnableByKafka
 @EnableByRest
+@EnableMongoAuditing
 @ConfigurationPropertiesScan
 @SpringBootApplication
 public class ArtingestApplication {

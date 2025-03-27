@@ -1,6 +1,8 @@
 package com.palmrq.layoff.artingest.model;
 
 import java.time.Instant;
+import java.time.YearMonth;
+import java.util.Set;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
@@ -11,19 +13,21 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 
-@Document(collection = "failed-extraction")
+@Document(collection = "monthly-brief")
 @Accessors(fluent = true)
 @Getter
 @Builder
-public class FailedExtraction {
+public class MonthlyBrief {
+    /**
+     * This value should always be in UTC.
+     */
     @Id
-    private final String id;
-    private final Article article;
-    private final String message;
+    private final YearMonth yearMonth;
+    private long number;
+    private final Set<String> records;
 
     @CreatedDate
     private Instant createdAt;
     @LastModifiedDate
     private Instant updatedAt;
-
 }

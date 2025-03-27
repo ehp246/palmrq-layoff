@@ -8,8 +8,8 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.palmrq.layoff.artingest.config.JsonSchemaProvider;
 import com.palmrq.layoff.artingest.config.OllamaConfig;
-import com.palmrq.layoff.artingest.kafka.ArticleOutbox;
 import com.palmrq.layoff.artingest.kafka.ArticleInbox.ArticleSubmittedPayload;
+import com.palmrq.layoff.artingest.kafka.ArticleOutbox;
 import com.palmrq.layoff.artingest.model.LlmExtracted;
 import com.palmrq.layoff.artingest.ollama.OllamaApi;
 import com.palmrq.layoff.artingest.ollama.OllamaApi.Request;
@@ -37,7 +37,7 @@ public class OnActicleSubmitted {
 
         final var extracted = this.objectMapper.readValue(response.response(), LlmExtracted.class);
 
-        this.articleOutbox.articleExtracted(
-                new ArticleOutbox.ArticleExtractedPayload(newSubmission.id(), newSubmission.article(), extracted));
+        this.articleOutbox.articleExtracted(new ArticleOutbox.ArticleExtractedPayload(newSubmission.id(),
+                newSubmission.article(), extracted, newSubmission.timestamp()));
     }
 }
