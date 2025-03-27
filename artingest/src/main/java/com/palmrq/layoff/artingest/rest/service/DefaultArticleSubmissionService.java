@@ -1,12 +1,12 @@
-package com.palmrq.layoff.artingest.article.rest.service;
+package com.palmrq.layoff.artingest.rest.service;
 
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
-import com.palmrq.layoff.artingest.article.kafka.ArticleInbox;
-import com.palmrq.layoff.artingest.article.kafka.ArticleInbox.ArticleSubmittedPayload;
-import com.palmrq.layoff.artingest.article.model.Article;
+import com.palmrq.layoff.artingest.kafka.ArticleInbox;
+import com.palmrq.layoff.artingest.kafka.ArticleInbox.ArticleSubmittedPayload;
+import com.palmrq.layoff.artingest.model.Article;
 
 import lombok.RequiredArgsConstructor;
 

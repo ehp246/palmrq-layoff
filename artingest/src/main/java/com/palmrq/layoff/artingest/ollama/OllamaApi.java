@@ -1,4 +1,4 @@
-package com.palmrq.layoff.artingest.article.ollama;
+package com.palmrq.layoff.artingest.ollama;
 
 import java.time.Instant;
 
