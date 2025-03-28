@@ -1,6 +1,12 @@
 package com.palmrq.layoff.artingest.kafka.outbox;
 
+import java.time.Clock;
+import java.time.LocalDate;
+import java.time.YearMonth;
 import java.util.Map;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.palmrq.layoff.artingest.kafka.ArticleOutbox.ArticleExtractedPayload;
 import com.palmrq.layoff.artingest.model.LayoffRecord;
@@ -18,7 +24,8 @@ import me.ehp246.aufkafka.api.annotation.OfValue;
 @RequiredArgsConstructor
 @Log4j2
 public class OnArticleExtracted {
-
+    @Qualifier("systemDefaultZone")
+    private final Clock clockSystemDefaultZone;
     private final LayoffRecordsRepository recordRepo;
     private final MonthlyBriefRepository briefRepository;
 
@@ -34,8 +41,12 @@ public class OnArticleExtracted {
                 .percentage(extracted.percentage()).position(extracted.position()).reason(extracted.reason())
                 .source(new Source(SourceType.Web, Map.of("url", payload.article().url()))).build());
 
-        this.briefRepository.upsertRecordAndNumber(payload.yearMonth(), payload.id(), extracted.number());
+        final var yearMonth = YearMonth
+                .from(Optional.ofNullable(extracted.date()).or(() -> Optional.ofNullable(payload.article().date()))
+                        .orElseGet(() -> LocalDate.now(this.clockSystemDefaultZone)));
 
-        LOGGER.atTrace().log("{} updated by id:{}, number:{} ", payload::yearMonth, payload::id, extracted::number);
+        this.briefRepository.upsertRecordAndNumber(yearMonth, payload.id(), extracted.number());
+
+        LOGGER.atTrace().log("{} updated by id:{}, number:{} ", () -> yearMonth, payload::id, extracted::number);
     }
 }

@@ -40,7 +40,7 @@ public class OnActicleSubmitted {
             throw new IllegalArgumentException("Company and number must be specified");
         }
 
-        this.articleOutbox.articleExtracted(new ArticleOutbox.ArticleExtractedPayload(newSubmission.id(),
-                newSubmission.article(), extracted, newSubmission.timestamp()));
+        this.articleOutbox.articleExtracted(
+                new ArticleOutbox.ArticleExtractedPayload(newSubmission.id(), newSubmission.article(), extracted));
     }
 }

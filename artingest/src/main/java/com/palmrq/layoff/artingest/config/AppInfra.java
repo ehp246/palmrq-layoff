@@ -16,8 +16,8 @@ import com.github.victools.jsonschema.generator.SchemaVersion;
 @Configuration
 public class AppInfra {
     @Bean
-    Clock clock() {
-        return Clock.systemUTC();
+    Clock clockSystemDefaultZone() {
+        return Clock.systemDefaultZone();
     }
 
     @Bean

@@ -1,6 +1,7 @@
 package com.palmrq.layoff.artingest.model;
 
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.Map;
 
 import org.springframework.data.annotation.CreatedDate;
@@ -29,7 +30,7 @@ public class LayoffRecord {
      * When it happened.
      */
     @Indexed
-    private final Instant date;
+    private final LocalDate date;
     private Double percentage;
     private String location;
     @Indexed
