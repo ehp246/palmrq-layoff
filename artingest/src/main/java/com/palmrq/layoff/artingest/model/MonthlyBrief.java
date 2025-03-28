@@ -24,7 +24,7 @@ public class MonthlyBrief {
      */
     @Id
     private final YearMonth yearMonth;
-    private long number;
+    private final long number;
     private final Set<String> records;
 
     @CreatedDate

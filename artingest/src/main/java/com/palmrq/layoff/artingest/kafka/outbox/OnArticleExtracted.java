@@ -25,6 +25,10 @@ public class OnArticleExtracted {
     public void invoke(@OfValue ArticleExtractedPayload payload) {
         final var extracted = payload.extracted();
 
+        if (extracted.number() == null || extracted.number() <= 0) {
+            LOGGER.atWarn().log("Invalid id:{}, number:{}", payload::id, extracted::number);
+        }
+
         this.recordRepo.save(LayoffRecord.builder().id(payload.id()).company(extracted.company())
                 .number(extracted.number()).location(extracted.location()).date(extracted.date())
                 .percentage(extracted.percentage()).position(extracted.position()).reason(extracted.reason())
@@ -32,6 +36,6 @@ public class OnArticleExtracted {
 
         this.briefRepository.upsertRecordAndNumber(payload.yearMonth(), payload.id(), extracted.number());
 
-        LOGGER.trace("Updated {} by {} ", payload::yearMonth, payload::id);
+        LOGGER.atTrace().log("{} updated by id:{}, number:{} ", payload::yearMonth, payload::id, extracted::number);
     }
 }

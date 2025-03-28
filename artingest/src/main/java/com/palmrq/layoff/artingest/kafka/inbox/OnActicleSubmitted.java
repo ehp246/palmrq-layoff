@@ -1,8 +1,5 @@
 package com.palmrq.layoff.artingest.kafka.inbox;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -15,13 +12,14 @@ import com.palmrq.layoff.artingest.ollama.OllamaApi;
 import com.palmrq.layoff.artingest.ollama.OllamaApi.Request;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import me.ehp246.aufkafka.api.annotation.ForKey;
 import me.ehp246.aufkafka.api.annotation.OfValue;
 
 @ForKey("ArticleSubmitted")
 @RequiredArgsConstructor
+@Log4j2
 public class OnActicleSubmitted {
-    private static final Logger LOGGER = LogManager.getLogger();
 
     private final ObjectMapper objectMapper;
     private final JsonSchemaProvider jsonSchemaProvider;
@@ -36,6 +34,11 @@ public class OnActicleSubmitted {
                         ollamaConfig.promptInstruction() + newSubmission.article().content()));
 
         final var extracted = this.objectMapper.readValue(response.response(), LlmExtracted.class);
+
+        if (extracted.company() == null || extracted.company().isBlank() || extracted.number() == null
+                || extracted.number() <= 0) {
+            throw new IllegalArgumentException("Company and number must be specified");
+        }
 
         this.articleOutbox.articleExtracted(new ArticleOutbox.ArticleExtractedPayload(newSubmission.id(),
                 newSubmission.article(), extracted, newSubmission.timestamp()));
