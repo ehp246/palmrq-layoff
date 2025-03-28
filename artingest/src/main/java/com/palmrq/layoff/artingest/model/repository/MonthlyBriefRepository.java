@@ -1,7 +1,6 @@
 package com.palmrq.layoff.artingest.model.repository;
 
 import java.time.YearMonth;
-import java.util.Set;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
@@ -11,16 +10,16 @@ import org.springframework.transaction.annotation.Transactional;
 import com.palmrq.layoff.artingest.model.MonthlyBrief;
 
 public interface MonthlyBriefRepository extends MongoRepository<MonthlyBrief, YearMonth> {
-    @Update("{ $push: { records: ?1 }, $inc: { number: ?2 }, $set: { updatedAt: new Date() } }")
+    @Update("{ $inc: { number: ?1, incidenceCount: 1 }, $set: { updatedAt: new Date() } }")
     @Query("{ _id: ?0 }")
-    long updateExisting(YearMonth yearMonth, String newRecordId, int newNumber);
+    long updateExisting(YearMonth yearMonth, int newNumber);
 
     @Transactional
-    default void upsertRecordAndNumber(YearMonth yearMonth, String newRecordId, int newNumber) {
+    default void upsertRecordAndNumber(YearMonth yearMonth, int newNumber) {
         if (!existsById(yearMonth)) {
-            save(MonthlyBrief.builder().yearMonth(yearMonth).records(Set.of(newRecordId)).number(newNumber).build());
+            save(MonthlyBrief.builder().yearMonth(yearMonth).number(newNumber).incidenceCount(1).build());
         } else {
-            updateExisting(yearMonth, newRecordId, newNumber);
+            updateExisting(yearMonth, newNumber);
         }
     }
 }

@@ -10,26 +10,31 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.index.CompoundIndex;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.lang.NonNull;
+import org.springframework.lang.Nullable;
 
 import lombok.Builder;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 
-@Document(collection = "layoff-record")
+@Document(collection = "layoff-event")
 @Accessors(fluent = true)
 @Getter
 @Builder
 @CompoundIndex(def = "{'company': 1, 'date': 1}")
-public class LayoffRecord {
+public class LayoffEvent {
     @Id
     private final String id;
     @Indexed
+    @NonNull
     private final String company;
+    @NonNull
     private final int number;
     /**
-     * When it happened.
+     * When it happened according to the original article.
      */
     @Indexed
+    @Nullable
     private final LocalDate date;
     private Double percentage;
     private String location;
@@ -40,7 +45,7 @@ public class LayoffRecord {
     private final Source source;
 
     @CreatedDate
-    private Instant createdAt;
+    private final Instant createdAt;
     @LastModifiedDate
     private Instant updatedAt;
 

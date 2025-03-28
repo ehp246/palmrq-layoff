@@ -9,10 +9,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.palmrq.layoff.artingest.kafka.ArticleOutbox.ArticleExtractedPayload;
-import com.palmrq.layoff.artingest.model.LayoffRecord;
-import com.palmrq.layoff.artingest.model.LayoffRecord.Source;
-import com.palmrq.layoff.artingest.model.LayoffRecord.SourceType;
-import com.palmrq.layoff.artingest.model.repository.LayoffRecordsRepository;
+import com.palmrq.layoff.artingest.model.LayoffEvent;
+import com.palmrq.layoff.artingest.model.LayoffEvent.Source;
+import com.palmrq.layoff.artingest.model.LayoffEvent.SourceType;
+import com.palmrq.layoff.artingest.model.repository.LayoffEventRepository;
 import com.palmrq.layoff.artingest.model.repository.MonthlyBriefRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -26,7 +26,7 @@ import me.ehp246.aufkafka.api.annotation.OfValue;
 public class OnArticleExtracted {
     @Qualifier("systemDefaultZone")
     private final Clock clockSystemDefaultZone;
-    private final LayoffRecordsRepository recordRepo;
+    private final LayoffEventRepository recordRepo;
     private final MonthlyBriefRepository briefRepository;
 
     public void invoke(@OfValue ArticleExtractedPayload payload) {
@@ -36,7 +36,7 @@ public class OnArticleExtracted {
             LOGGER.atWarn().log("Invalid id:{}, number:{}", payload::id, extracted::number);
         }
 
-        this.recordRepo.save(LayoffRecord.builder().id(payload.id()).company(extracted.company())
+        this.recordRepo.save(LayoffEvent.builder().id(payload.id()).company(extracted.company())
                 .number(extracted.number()).location(extracted.location()).date(extracted.date())
                 .percentage(extracted.percentage()).position(extracted.position()).reason(extracted.reason())
                 .source(new Source(SourceType.Web, Map.of("url", payload.article().url()))).build());
@@ -45,7 +45,7 @@ public class OnArticleExtracted {
                 .from(Optional.ofNullable(extracted.date()).or(() -> Optional.ofNullable(payload.article().date()))
                         .orElseGet(() -> LocalDate.now(this.clockSystemDefaultZone)));
 
-        this.briefRepository.upsertRecordAndNumber(yearMonth, payload.id(), extracted.number());
+        this.briefRepository.upsertRecordAndNumber(yearMonth, extracted.number());
 
         LOGGER.atTrace().log("{} updated by id:{}, number:{} ", () -> yearMonth, payload::id, extracted::number);
     }

@@ -2,7 +2,6 @@ package com.palmrq.layoff.artingest.model;
 
 import java.time.Instant;
 import java.time.YearMonth;
-import java.util.Set;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
@@ -24,8 +23,14 @@ public class MonthlyBrief {
      */
     @Id
     private final YearMonth yearMonth;
+    /**
+     * Total number of laid-off employees
+     */
     private final long number;
-    private final Set<String> records;
+    /**
+     * Total number of lay-off incidences
+     */
+    private final long incidenceCount;
 
     @CreatedDate
     private Instant createdAt;
