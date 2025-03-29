@@ -1,0 +1,22 @@
+{
+    "event": {
+        "type": "layoff",
+        "date": "Friday (from the article, exact date not specified)",
+        "company": "Amscan",
+        "departments": "Party City’s wholesale division",
+        "location": "Orange County, USA",
+        "number": 471,
+        "percentage": null,
+        "percentage.calculated": false,
+        "position": "Material handlers, supervisors, human resources staff",
+        "reason": "Chapter 11 bankruptcy",
+        "source": {
+            "type": "Web",
+            "clientMeta": {
+                "URL": null,
+                "title": "Nearly 500 workers laid off as Amscan facility closes in Orange County",
+                "summary": "Amscan, Party City’s wholesale division, is laying off 471 workers and closing its Orange County distribution center due to Chapter 11 bankruptcy. The closure is scheduled for Friday, and affected roles include material handlers, supervisors, and HR staff."
+            }
+        }
+    }
+}
