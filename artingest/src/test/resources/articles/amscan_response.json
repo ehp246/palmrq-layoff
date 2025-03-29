@@ -1,0 +1,20 @@
+{
+    "event": {
+        "type": "layoff",
+        "date": "Friday (from the article, exact date not specified)",
+        "company": "Amscan",
+        "departments": "Party City’s wholesale division",
+        "location": "Orange County, USA",
+        "number": 471,
+        "percentage": null,
+        "percentage.calculated": false,
+        "position": "Material handlers, supervisors, human resources staff",
+        "reason": "Chapter 11 bankruptcy",
+        "source": {
+            "type": "Web",
+            "clientMeta": {
+                "URL": null
+            }
+        }
+    }
+}

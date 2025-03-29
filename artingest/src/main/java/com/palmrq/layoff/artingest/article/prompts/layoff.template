@@ -1,0 +1,65 @@
+Extract layoff details from the following article.
+
+{{article content}}
+
+Specifically, identify and provide the following details (if available):
+1. **Date of the Layoff**:  
+   - Specify the date when the layoff was announced or when it took effect.  
+   - If not mentioned, leave the field as `null`.
+2. **Company or Organization Name**:  
+   - Provide the name of the company or organization implementing the layoffs.
+3. **Departments of the Organization (if mentioned)**:  
+   - List the specific departments or divisions of the organization affected by the layoffs.  
+   - If not mentioned, leave the field as `null`.
+4. **Location**:  
+   - Specify the city, state, or country where the layoffs occurred.  
+   - If not mentioned, leave the field as `null`.
+5. **Number of Employees Affected**:  
+   - Provide the total number of employees impacted by the layoffs.  
+   - If not mentioned, leave the field as `null`.
+6. **Total Workforce**:  
+   - Provide the total number of employees of the company, if available in the provided content or from external knowledge.  
+   - If not mentioned, leave the field as `null`.
+7. **Percentage of the Staff Impacted**:  
+   - Use the data from the article if provided.  
+   - If not mentioned but the total workforce number is available, calculate the percentage of the workforce affected by the layoffs and include `"percentage.calculated": true` in the output.  
+   - If the total number of employees is not available, set the field to `null`.
+8. **Job Positions or Departments Impacted**:  
+   - List the specific job positions or departments affected by the layoffs.  
+   - If not mentioned, leave the field as `null`.
+9. **Reasons for the Layoff (if mentioned)**:  
+   - Summarize the reasons provided for the layoffs (e.g., bankruptcy, restructuring, financial difficulties).  
+   - If not mentioned, leave the field as `null`.
+10. **Source**:  
+    - Specify the type of source (e.g., website, press release, report).  
+    - If the source is a website, include the URL of the website.  
+    - If not mentioned, leave the field as `null`.
+
+### **Output Format**
+Summarize the extracted details concisely in the following JSON format. If any data is not mentioned, leave the field value as `null`:
+
+```json
+{
+    "event": {
+        "type": "layoff",
+        "date": null,
+        "company": "Amscan",
+        "departments": "Party City’s wholesale division",
+        "location": "Orange County, USA",
+        "number": "471",
+        "percentage": null,
+        "percentage.calculated": false,
+        "position": "Material handlers, supervisors, human resources staff",
+        "reason": "Chapter 11 bankruptcy",
+        "source":{
+            "type": "Web",
+            "clientMeta": {
+               "URL": "https://www.msn.com"
+            }
+        }
+    }
+}
+```
+### **Additional Notes**
+- Ensure the output is concise and does not include extra information not directly related to the layoff details.
+- If the percentage is calculated, set `"percentage.calculated": true`; otherwise, set it to `false`.
